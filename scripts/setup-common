@@ -8,6 +8,29 @@ if [[ -z "$1" ]]; then
     JETPACK_VERSION="5.0.2"
 fi
 
+if [[ $JETPACK_VERSION == "6.0" ]]; then
+    JETPACK_VERSION="6.0_Prod"
+    PS3="Please Select: "
+    jp6=("Production (Default)" "Developer Preview" "Quit")
+    select opt in "${jp6[@]}"; do
+        case $opt in
+            "Production (Default)")
+	        JETPACK_VERSION="6.0_Prod"
+	        break;
+                ;;
+            "Developer Preview")
+	        JETPACK_VERSION="6.0"
+	        break;
+                ;;
+	    "Quit")
+	        echo "Quit"
+	        exit
+	        ;;
+            *) echo "Please Select from the Options";;
+        esac
+    done
+fi
+
 if [[ $JETPACK_VERSION == "6.0_Prod" ]]; then
     L4T_VERSION="jetson_36.3"
     KERNEL_DIR="kernel/kernel-jammy-src"

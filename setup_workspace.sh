@@ -42,7 +42,10 @@ DisplayNvidiaLicense ""
 if [[ ! -d "$DEVDIR/l4t-gcc/$JETPACK_VERSION/bin/" ]]; then
     mkdir -p $DEVDIR/l4t-gcc/$JETPACK_VERSION
     cd $DEVDIR/l4t-gcc/$JETPACK_VERSION
-    if [[ "$JETPACK_VERSION" == "6.0" ]]; then
+    if [[ "$JETPACK_VERSION" == "6.0_Prod" ]]; then
+        wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2 -O aarch64--glibc--stable-final.tar.bz2
+        tar xf aarch64--glibc--stable-final.tar.bz2 --strip-components 1
+    elif [[ "$JETPACK_VERSION" == "6.0" ]]; then
         wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v2.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2 -O aarch64--glibc--stable-final.tar.bz2
         tar xf aarch64--glibc--stable-final.tar.bz2 --strip-components 1
     elif [[ "$JETPACK_VERSION" == "5.1.2" ]]; then
@@ -62,7 +65,7 @@ cd $DEVDIR
 ./scripts/source_sync_$JETPACK_VERSION.sh -t $L4T_VERSION -d sources_$JETPACK_VERSION
 
 # copy Makefile for jp6
-if [[ "$JETPACK_VERSION" == "6.0" ]]; then
+if [[ "$JETPACK_VERSION" == "6.0" || "$JETPACK_VERSION" == "6.0_Prod" ]]; then
     cp ./nvidia-oot/Makefile ./sources_$JETPACK_VERSION/
     cp ./kernel/kernel-jammy-src/Makefile ./sources_$JETPACK_VERSION/kernel
 fi

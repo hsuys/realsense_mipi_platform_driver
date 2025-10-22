@@ -66,9 +66,14 @@ apply_serdes_trigger_setting() {
 
 if [[ $# < 1 ]]; then
     echo "rs-d457-hw-sync.sh [fps]"
-    echo "e.g., rs-d457-hw-sync.sh 30.0089"
+    echo "30fps Depth e.g., rs-d457-hw-sync.sh 29.965"
+    echo "15fps Depth e.g., rs-d457-hw-sync.sh 14.994"
     exit 1
 else
+    echo "    Configure SerDes..."
+    apply_serdes_trigger_setting
+    echo "    SerDes Configured  "
+    
     FPS=$1
     python3 rs-trigger-generator.py $FPS
 fi

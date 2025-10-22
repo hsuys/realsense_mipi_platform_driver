@@ -29,16 +29,16 @@ set -e
 # Configure 1x Deser and 2x Ser 
 apply_serdes_trigger_setting() {
     ### HW-SYNC  ###
-    # SerDes Depth Trigger Path MFP7 > MFP8
+    # SerDes Depth Trigger Path MFP7 > MFP0
     sudo i2cset -f -y 2 0x48 0x02 0x82c5 w #MFP7
     sudo i2cset -f -y 2 0x48 0x02 0x1fc6 w
-    sudo i2cset -f -y 2 0x42 0x02 0x84c1 w #MFP1
-    sudo i2cset -f -y 2 0x42 0x02 0x20c2 w #OUT_TYPE bit to 1 (no pullup)
-    sudo i2cset -f -y 2 0x42 0x02 0x1fc3 w
-    sudo i2cset -f -y 2 0x60 0x02 0x84c1 w #MFP1
-    sudo i2cset -f -y 2 0x60 0x02 0x20c2 w #OUT_TYPE bit to 1 (no pullup)
-    sudo i2cset -f -y 2 0x60 0x02 0x1fc3 w
-
+    sudo i2cset -f -y 2 0x42 0x02 0x84be w #MFP0
+    sudo i2cset -f -y 2 0x42 0x02 0x20bf w #OUT_TYPE bit to 1 (Push-pull)
+    sudo i2cset -f -y 2 0x42 0x02 0x1fc0 w
+    sudo i2cset -f -y 2 0x60 0x02 0x84be w #MFP0
+    sudo i2cset -f -y 2 0x60 0x02 0x20bf w #OUT_TYPE bit to 1 (Push-pull)
+    sudo i2cset -f -y 2 0x60 0x02 0x1fc0 w
+    
 #    echo -n "> Depth 0x48: "
 #    sudo i2ctransfer -y -f 2 w2@0x48 0x02 0xc5 r2
 #    echo -n "> Depth 0x42: "
@@ -46,15 +46,15 @@ apply_serdes_trigger_setting() {
 #    echo -n "> Depth 0x60: "
 #    sudo i2ctransfer -y -f 2 w2@0x60 0x02 0xc1 r3
 
-    # SerDes RGB Trigger Path MFP9 > MFP0
+    # SerDes RGB Trigger Path MFP9 > MFP1
     sudo i2cset -f -y 2 0x48 0x02 0x82cb w #MFP9
     sudo i2cset -f -y 2 0x48 0x02 0x1bcc w
-    sudo i2cset -f -y 2 0x42 0x02 0x84be w #MFP0
-    sudo i2cset -f -y 2 0x42 0x02 0x20bf w #OUT_TYPE bit to 1 (no pullup)
-    sudo i2cset -f -y 2 0x42 0x02 0x1bc0 w
-    sudo i2cset -f -y 2 0x60 0x02 0x84be w #MFP0
-    sudo i2cset -f -y 2 0x60 0x02 0x20bf w #OUT_TYPE bit to 1 (no pullup)
-    sudo i2cset -f -y 2 0x60 0x02 0x1bc0 w
+    sudo i2cset -f -y 2 0x42 0x02 0x84c1 w #MFP1
+    sudo i2cset -f -y 2 0x42 0x02 0x20c2 w #OUT_TYPE bit to 1 (Push-pull)
+    sudo i2cset -f -y 2 0x42 0x02 0x1bc3 w
+    sudo i2cset -f -y 2 0x60 0x02 0x84c1 w #MFP1
+    sudo i2cset -f -y 2 0x60 0x02 0x20c2 w #OUT_TYPE bit to 1 (Push-pull)
+    sudo i2cset -f -y 2 0x60 0x02 0x1bc3 w
 
 #    echo -n "> RGB 0x48: "
 #    sudo i2ctransfer -y -f 2 w2@0x48 0x02 0xcb r2

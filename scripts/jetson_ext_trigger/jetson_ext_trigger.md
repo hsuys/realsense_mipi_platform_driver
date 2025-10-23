@@ -49,11 +49,12 @@ https://github.com/IntelRealSense/realsense_mipi_platform_driver/blob/master/scr
 
 * Configure the PWM on System Without jetson-gpio Library 
 
-'''
-rs-trigger.sh [pin-id] [period] [duty-cycle]
-The units are in nanoseconds
-e.g.,
-rs-trigger.sh 18 33333330 16666666
+  ```shell
+  rs-trigger.sh [pin-id] [period] [duty-cycle]
+  The units are in nanoseconds
 
-This configures the pin 18 pwm of period to 33.33333 ms, 50% duty cycle  
-'''
+  e.g.,
+  rs-trigger.sh 18 33333330 16666666
+
+  This configures the pin 18 pwm of period to 33.33333 ms, 50% duty cycle  
+  ```shell

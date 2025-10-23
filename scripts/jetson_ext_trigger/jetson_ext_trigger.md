@@ -44,3 +44,16 @@ https://github.com/NVIDIA/jetson-gpio
 
 MAX9296/MAX9295 HW-SYNC Configuration setting:
 https://github.com/IntelRealSense/realsense_mipi_platform_driver/blob/master/scripts/SerDes_D457.sh#L175
+
+## Change the pwm Period and duty cycle manually 
+
+* Configure the PWM on System Without jetson-gpio Library 
+
+'''
+rs-trigger.sh [pin-id] [period] [duty-cycle]
+The units are in nanoseconds
+e.g.,
+rs-trigger.sh 18 33333330 16666666
+
+This configures the pin 18 pwm of period to 33.33333 ms, 50% duty cycle  
+'''

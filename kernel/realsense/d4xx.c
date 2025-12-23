@@ -1006,8 +1006,8 @@ static const struct ds5_resolution d45x_calibration_sizes[] = {
 	{
 		.width =  1280,
 		.height = 800,
-		.framerates = ds5_framerate_15_25,
-		.n_framerates = ARRAY_SIZE(ds5_framerate_15_25),
+		.framerates = ds5_framerate_15_30,
+		.n_framerates = ARRAY_SIZE(ds5_framerate_15_30),
 	},
 };
 
